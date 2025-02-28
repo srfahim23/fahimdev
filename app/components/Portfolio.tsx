@@ -6,6 +6,7 @@ const Portfolio = () => {
     { id: 2, title: "Interactive Web Experience", image: "/placeholder.svg?height=200&width=300" },
     { id: 3, title: "Motion Graphics Showcase", image: "/placeholder.svg?height=200&width=300" },
     { id: 4, title: "Responsive Web Design", image: "/placeholder.svg?height=200&width=300" },
+    { id: 5, title: "Islamic Hub", image: "/placeholder.svg?height=200&width=300", url: "https://islamic-hub-liard.vercel.app/" },
   ]
 
   return (
@@ -27,7 +28,7 @@ const Portfolio = () => {
               />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <a href="#" className="text-blue-600 hover:underline">
+                <a href={project.url || "#"} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
                   View Project
                 </a>
               </div>
@@ -40,4 +41,3 @@ const Portfolio = () => {
 }
 
 export default Portfolio
-

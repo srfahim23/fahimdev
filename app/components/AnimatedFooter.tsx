@@ -113,7 +113,7 @@ const AnimatedFooter = () => {
         >
           <p className="text-lg">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 font-semibold">
-              &copy; {new Date().getFullYear()} Developed and copy by FahimDev
+              &copy; {new Date().getFullYear()} Developed by FahimDev
             </span>
             <span className="ml-2 text-gray-300">All rights reserved.</span>
           </p>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -17,28 +17,27 @@ const AnimatedNav = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("")
 
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY
+    const sections = document.querySelectorAll("section")
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - 100
+      const sectionBottom = sectionTop + section.offsetHeight
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        setActiveSection(section.id)
+      }
+    })
+  }
+
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-
-      const sections = document.querySelectorAll("section")
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100
-        const sectionBottom = sectionTop + section.offsetHeight
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          setActiveSection(section.id)
-        }
-      })
-    }
-
     window.addEventListener("scroll", handleScroll)
     handleScroll()
 
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     const targetId = href.replace("#", "")
     const targetElement = document.getElementById(targetId)
@@ -47,11 +46,11 @@ const AnimatedNav = () => {
       setActiveSection(targetId)
       setIsOpen(false)
     }
-  }
+  }, [])
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-purple-900 via-indigo-900 to-blue-900"
+      className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-[#7332d4] to-[#4a6ded] shadow-lg"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 120 }}
@@ -74,6 +73,7 @@ const AnimatedNav = () => {
                     activeSection === item.href.slice(1) ? "border-b-2 border-blue-400" : "hover:text-blue-400"
                   }`}
                   onClick={(e) => handleNavClick(e, item.href)}
+                  aria-label={`Navigate to ${item.name}`}
                 >
                   <motion.span
                     initial={{ y: -20, opacity: 0 }}
@@ -91,6 +91,7 @@ const AnimatedNav = () => {
             onClick={() => setIsOpen(!isOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Toggle navigation menu"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -105,12 +106,13 @@ const AnimatedNav = () => {
         </div>
       </div>
       <motion.div
-        className="md:hidden absolute top-full left-0 w-full bg-gradient-to-r from-purple-900 via-indigo-900 to-blue-900"
+        className="md:hidden absolute top-full left-0 w-full bg-gradient-to-r from-[#7332d4] to-[#4a6ded]"
         animate={isOpen ? "open" : "closed"}
         variants={{
           open: { opacity: 1, x: 0 },
           closed: { opacity: 0, x: "-100%" },
         }}
+        transition={{ type: "spring", stiffness: 120 }}
       >
         {navItems.map((item, index) => (
           <motion.div
@@ -126,6 +128,7 @@ const AnimatedNav = () => {
                 activeSection === item.href.slice(1) ? "border-l-4 border-blue-400" : "hover:text-blue-400"
               }`}
               onClick={(e) => handleNavClick(e, item.href)}
+              aria-label={`Navigate to ${item.name}`}
             >
               {item.name}
             </Link>
@@ -137,4 +140,3 @@ const AnimatedNav = () => {
 }
 
 export default AnimatedNav
-

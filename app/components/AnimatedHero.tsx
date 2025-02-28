@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { FaGithub } from "react-icons/fa"
+import { Typewriter } from "react-simple-typewriter"
 
 const AnimatedHero = () => {
   const [isExploreClicked, setIsExploreClicked] = useState(false)
@@ -24,15 +25,26 @@ const AnimatedHero = () => {
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ repeat: Number.POSITIVE_INFINITY, duration: 5 }}
         >
-          Welcome to My Creative World
+          <Typewriter
+            words={[
+              'Welcome to My Creative World',
+              'Animator | Web Developer | Creative Thinker'
+            ]}
+            loop={0}
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={2000}
+          />
         </motion.h1>
-        <motion.p
-          className="text-2xl mb-8"
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 3, ease: "easeInOut" }}
+        <motion.h2
+          className="text-2xl font-semibold mb-8"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 5 }}
         >
-          Animator | Web Developer | Creative Thinker
-        </motion.p>
+          It's Fahim Faysal, a creative web developer and UI UX expert
+        </motion.h2>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <motion.a
             href="#portfolio"
@@ -68,4 +80,3 @@ const AnimatedHero = () => {
 }
 
 export default AnimatedHero
-

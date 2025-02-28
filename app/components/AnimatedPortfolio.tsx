@@ -41,6 +41,13 @@ const projects = [
   },
   {
     id: 5,
+    title: "Islamic Hub",
+    description: "A comprehensive platform for Islamic resources and community engagement",
+    image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGVjb21tZXJjZSUyMHdlYnNpdGV8ZW58MHx8MHx8fDA%3D",
+    link: "https://islamic-hub-liard.vercel.app/",
+  },
+  {
+    id: 6,
     title: "Upcoming Project",
     description: "An exciting new project coming soon. Stay tuned!",
     image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGVjb21tZXJjZSUyMHdlYnNpdGV8ZW58MHx8MHx8fDA%3D",
@@ -48,7 +55,7 @@ const projects = [
     upcoming: true,
   },
   {
-    id: 6,
+    id: 7,
     title: "Future Innovation",
     description: "Innovative ideas taking shape. Watch this space!",
     image: "https://plus.unsplash.com/premium_photo-1725937966775-ca4529944114?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGZ1dHVyZSUyMGlubm92YXRpb258ZW58MHx8MHx8fDA%3D",
@@ -139,4 +146,3 @@ const AnimatedPortfolio = () => {
 }
 
 export default AnimatedPortfolio
-

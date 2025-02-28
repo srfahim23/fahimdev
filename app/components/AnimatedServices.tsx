@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { FaCode, FaPaintBrush, FaMobileAlt, FaSearch, FaRocket, FaExchangeAlt } from "react-icons/fa"
-// import AnimatedUnderline from "./AnimatedUnderline"
 import AnimatedGradientText from "./AnimatedGradientText"
 
 const services = [
@@ -50,7 +49,7 @@ const AnimatedServices = () => {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              className="relative overflow-hidden rounded-lg"
+              className="relative overflow-hidden rounded-lg shadow-lg"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -67,6 +66,7 @@ const AnimatedServices = () => {
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                   boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                   backdropFilter: "blur(10px)",
+                  scale: 1.05,
                 }}
               >
                 <div>
@@ -90,4 +90,3 @@ const AnimatedServices = () => {
 }
 
 export default AnimatedServices
-

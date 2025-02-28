@@ -86,13 +86,13 @@ const contactInfo = [
   {
     icon: FaPhone,
     label: "Phone",
-    value: "+1 234 567 890",
+    value: "+8801617026858",
     color: "text-green-400",
   },
   {
     icon: FaMapMarkerAlt,
     label: "Location",
-    value: "New York, USA",
+    value: "Sirajganj Dhaka, BD",
     color: "text-blue-400",
   },
 ]
